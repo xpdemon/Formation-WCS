@@ -12,7 +12,7 @@ public class StringUtils {
         String vowels = "";
 
         if (candidate == null) {
-            return vowels = "Null parameters";
+            return vowels = "";
         }
         else {
             char[] letters = candidate.toCharArray();
@@ -32,7 +32,7 @@ public class StringUtils {
     public static String unicVowels(String expression) {
         String vowels = "";
         if (expression == null){
-            return vowels = "NULL PARAMETER";
+            return vowels = "";
         }
         else{
             char[] lettersArray=expression.toCharArray();

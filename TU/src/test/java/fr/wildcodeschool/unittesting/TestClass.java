@@ -34,7 +34,7 @@ public class TestClass {
 
     public void exceptionCase(){
         String wordtest = testCase.vowels(null);
-        String expected = "Null parameters";
+        String expected = "";
         assertEquals(expected,expected,wordtest);
     }
 
@@ -74,7 +74,7 @@ public class TestClass {
 
     public void nullParameterCase(){
         String wordtest = testCase.unicVowels(null);
-        String expected = "NULL PARAMETER";
+        String expected = "";
         assertEquals(expected,expected,wordtest);
     }
 

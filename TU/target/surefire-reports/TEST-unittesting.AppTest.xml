@@ -4,7 +4,7 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="9.0.4+11"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-9-oracle/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/wilder/Bureau/Formation/TU"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/wilder/Bureau/Formation/Formation/TU"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="FR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/wilder/Bureau/Formation/TU"/>
+    <property name="user.dir" value="/home/wilder/Bureau/Formation/Formation/TU"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="9.0.4+11"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
