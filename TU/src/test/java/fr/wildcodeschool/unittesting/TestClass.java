@@ -54,8 +54,8 @@ public class TestClass {
     ///// TEST # 1 /////
     @Test
     public void occurencesTest(){
-        String wordtest = testCase.unicVowels("iiiiii");
-        String expected = "i";
+        String wordtest = testCase.unicVowels("ipYzYo");
+        String expected = "iYo";
         assertEquals(expected,expected,wordtest);
 
     }
