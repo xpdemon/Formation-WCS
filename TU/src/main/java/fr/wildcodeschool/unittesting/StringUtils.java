@@ -2,7 +2,7 @@ package fr.wildcodeschool.unittesting;
 
 public class StringUtils {
 
-    private static final String ALL_VOWELS = "aeiouAEIOU";
+    private static final String ALL_VOWELS = "aeiouyAEIOUY";
 
     /**
      * Renvoie la chaine formée par les voyelles d'une chaine de caractères
@@ -40,7 +40,9 @@ public class StringUtils {
             for(int i = 0; i < expression.length();i++){
 
                 if (ALL_VOWELS.indexOf(lettersArray[i])>=0){
+                    if(vowels.indexOf(lettersArray[i])<0){
                     vowels+=lettersArray[i];
+                    }
                 }
             }
             return vowels;
