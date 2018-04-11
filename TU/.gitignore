@@ -28,6 +28,9 @@ local.properties
 # CDT- autotools
 .autotools
 
+# intelliJ
+.iml
+
 # Java annotation processor (APT)
 .factorypath
 
@@ -83,3 +86,7 @@ local.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+Supprimerait target/classes/
+Supprimerait target/generated-sources/
+Supprimerait target/generated-test-sources/
+Supprimerait target/test-classes/
