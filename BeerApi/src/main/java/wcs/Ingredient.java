@@ -1,13 +1,18 @@
 package wcs;
 
-import java.util.List;
+
+import java.math.BigDecimal;
 
 public class Ingredient  {
 
+    String type;
     String name;
-    float quantities;
+    BigDecimal quantities;
 
+    public Ingredient(String type,String name){
+        this.type = type;
+        this.name = name;
 
-
+    }
 
 }

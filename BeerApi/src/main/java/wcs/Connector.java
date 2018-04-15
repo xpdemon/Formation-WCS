@@ -33,7 +33,9 @@ public class Connector {
             is.close();
         }
         catch (IOException e){
+
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE,null,e);
+
         }
 
         return array;

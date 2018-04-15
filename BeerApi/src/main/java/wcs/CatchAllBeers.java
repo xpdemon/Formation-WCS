@@ -1,48 +1,73 @@
 package wcs;
 
-import javax.json.Json;
-import javax.json.JsonArray;
 import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.json.stream.JsonParser;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CatchAllBeers{
+public class CatchAllBeers {
 
-    private JsonArray JsonAllBeers;
-
-
+    private List<Beer> allBeers;
 
 
     protected CatchAllBeers(String url) {
-        this.JsonAllBeers= allBeers(url);
+        this.allBeers= allBeers(url);
     }
 
 
-
-    private static JsonArray allBeers(String url){
-        int currentPage=1;
-        int maxPage = 10;
-
-        JsonArray allBeersArray = null;
+    private static List<Beer> allBeers(String url) {
+        int currentPage = 1;
+        int maxPage = 2;
+        List<Beer> allBeers = new ArrayList<>();
         while (currentPage != maxPage) {
-            Connector connector = new Connector(url+"?page="+currentPage);
-            for(int i=0 ; i< connector.getjsonArray().size();i++) {
-                allBeersArray.add(i, connector.getjsonArray().get(i));
+            Connector connector = new Connector(url + "?page=" + currentPage);
+            if(connector.getjsonArray().size()>0) {
+
+                for (int i = 0; i < connector.getjsonArray().size(); i++) {
+                    List<Ingredient> ingredients = new ArrayList<>();
+                    JsonObject jbeer = connector.getjsonArray().getJsonObject(i);
+                    JsonObject jIngredient = jbeer.getJsonObject("ingredients");
+
+                    for (int j = 0; j < jIngredient.getJsonArray("malt").size(); j++) {
+                        String type = "malt";
+                        String name = jIngredient.getJsonArray("malt").getJsonObject(j).get("name").toString();
+                        BigDecimal quantities = jIngredient.getJsonArray("malt").getJsonObject(j).getJsonObject("amount").getJsonNumber("value").bigDecimalValue();
+                        Malt ingredient = new Malt(type, name, quantities);
+                        ingredients.add(ingredient);
+                    }
+
+                    for (int j = 0; j < jIngredient.getJsonArray("hops").size(); j++) {
+                        String type = "hops";
+                        String name = jIngredient.getJsonArray("hops").getJsonObject(j).get("name").toString();
+                        BigDecimal quantities = jIngredient.getJsonArray("hops").getJsonObject(j).getJsonObject("amount").getJsonNumber("value").bigDecimalValue();
+                        Hops ingredient = new Hops(type, name, quantities);
+                        ingredients.add(ingredient);
+                    }
+
+                    String type = "yeast";
+                    String yeast = jIngredient.get("yeast").toString();
+                    Yeast ingredient = new Yeast(type, yeast);
+                    ingredients.add(ingredient);
+
+                    String name = jbeer.get("name").toString();
+                    int id = jbeer.getInt("id");
+                    Beer beer = new Beer(id, name, ingredients);
+                    allBeers.add(beer);
+
+                }
+                maxPage ++;
+                currentPage++;
             }
-            currentPage++;
+            else if (connector.getjsonArray().size()<=0){
+                currentPage++;
+            }
         }
-        return allBeersArray;
+        return allBeers;
     }
 
-
-
-    public JsonArray getJsonAllBeers() {
-        return JsonAllBeers;
-    }
-
-    public void setJsonAllBeers(JsonArray jsonAllBeers) {
-        JsonAllBeers = jsonAllBeers;
+    public List<Beer> getAllBeers() {
+        return allBeers;
     }
 }
+
+
