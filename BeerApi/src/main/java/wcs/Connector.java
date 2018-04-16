@@ -20,6 +20,7 @@ public class Connector {
     protected Connector (String url){
 
         this.jsonArray = connect(url);
+        this.url = url;
 
     }
 
@@ -30,6 +31,7 @@ public class Connector {
             InputStream is = new URL(url).openStream();
             JsonReader reader = Json.createReader(new InputStreamReader(is, "UTF-8"));
             array = reader.readArray();
+
             is.close();
         }
         catch (IOException e){

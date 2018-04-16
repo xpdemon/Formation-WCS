@@ -13,7 +13,7 @@ public class Trash {
 
     public static void main(String[] args) {
         CatchAllBeers allBeers = new CatchAllBeers("https://api.punkapi.com/v2/beers");
-        System.out.println(allBeers.getAllBeers());
+
     }
 }
 

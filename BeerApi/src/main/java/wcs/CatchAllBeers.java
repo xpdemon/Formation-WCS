@@ -10,19 +10,20 @@ public class CatchAllBeers {
     private List<Beer> allBeers;
 
 
-    protected CatchAllBeers(String url) {
-        this.allBeers= allBeers(url);
+    protected CatchAllBeers(Connector connector) {
+        this.allBeers= allBeers(connector);
     }
 
 
-    private static List<Beer> allBeers(String url) {
+    private static List<Beer> allBeers(Connector connector) {
         int currentPage = 1;
         int maxPage = 2;
+        String urlPage = connector.getUrl();
         List<Beer> allBeers = new ArrayList<>();
-        while (currentPage != maxPage) {
-            Connector connector = new Connector(url + "?page=" + currentPage);
-            if(connector.getjsonArray().size()>0) {
 
+        while (currentPage != maxPage) {
+            connector = new Connector(urlPage+"?page="+currentPage+"&per_page=80");
+            if(connector.getjsonArray().size()>0) {
                 for (int i = 0; i < connector.getjsonArray().size(); i++) {
                     List<Ingredient> ingredients = new ArrayList<>();
                     JsonObject jbeer = connector.getjsonArray().getJsonObject(i);
@@ -68,6 +69,9 @@ public class CatchAllBeers {
     public List<Beer> getAllBeers() {
         return allBeers;
     }
+
+
+
 }
 
 
