@@ -1,2 +1,10 @@
 wcs/Connector.class
 wcs/BeerApi.class
+wcs/Malt.class
+wcs/Hops.class
+wcs/CatchAllBeers.class
+wcs/Ingredient.class
+wcs/Beer.class
+wcs/CatchBeerById.class
+wcs/Yeast.class
+wcs/CatchBeerByName.class

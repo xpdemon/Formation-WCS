@@ -17,7 +17,7 @@ public class Connector {
     private JsonArray jsonArray;
 
 
-    protected Connector (String url){
+    public Connector(String url){
 
         this.jsonArray = connect(url);
         this.url = url;

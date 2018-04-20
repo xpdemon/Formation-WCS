@@ -10,7 +10,7 @@ public class CatchAllBeers {
     private List<Beer> allBeers;
 
 
-    protected CatchAllBeers(Connector connector) {
+    public CatchAllBeers(Connector connector) {
         this.allBeers= allBeers(connector);
     }
 
@@ -51,8 +51,14 @@ public class CatchAllBeers {
                     ingredients.add(ingredient);
 
                     String name = jbeer.get("name").toString();
+                    name = name.replaceAll("\"","");
+                    String url = jbeer.get("image_url").toString();
+                    url = url.replaceAll("\"","");
+                    String description = jbeer.get("description").toString();
+                    description = description.replaceAll("\"","");
                     int id = jbeer.getInt("id");
-                    Beer beer = new Beer(id, name, ingredients);
+
+                    Beer beer = new Beer(id, name, ingredients,url,description);
                     allBeers.add(beer);
 
                 }

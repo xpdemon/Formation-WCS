@@ -18,14 +18,13 @@ public class CatchBeerByName {
     private static Beer beerByName(String name,CatchAllBeers allBeers){
         Comparator comparator = String.CASE_INSENSITIVE_ORDER;
         Beer beer = null;
-        name = "\""+name+"\"";
+        name = name.replaceAll("\"","");
 
         for (int i = 0 ;i < allBeers.getAllBeers().size();i++){
             int comparaison = comparator.compare(name,allBeers.getAllBeers().get(i).getName());
             if (comparaison ==0){
                 beer = allBeers.getAllBeers().get(i);
-
-
+                if (beer != null){break;}
             }
             else if (comparaison != 0 ){
                 Collator collator = Collator.getInstance(Locale.FRENCH);
@@ -33,6 +32,7 @@ public class CatchBeerByName {
                 comparaison = collator.compare(name,allBeers.getAllBeers().get(i).getName());
                 if(comparaison ==0){
                     beer = allBeers.getAllBeers().get(i);
+                    if (beer != null){break;}
 
                 }
 

@@ -7,7 +7,7 @@ public class CatchBeerById {
     private Beer beerById;
 
 
-    protected  CatchBeerById(int findingId,CatchAllBeers allBeers){
+    public CatchBeerById(int findingId, CatchAllBeers allBeers){
         this.beerById = beerById(findingId,allBeers);
     }
 
